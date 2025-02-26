@@ -1,67 +1,123 @@
 const Home = () => {
     return (
       <>
-        <div className="bg-blue-600 text-white py-20 px-2.5  text-center">
-            <h1 className="text-4xl font-bold">Build Your Stunning Portfolio Today</h1>
-            <p className="mt-2 text-lg">Create a beautiful portfolio to showcase your skills and projects.</p>
-            <button className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg ">
-                Get Started
+        {/* Hero Section */}
+        <div className="bg-gradient-to-r from-gray-900 to-black text-white py-24 px-6 text-center">
+          <h1 className="text-5xl font-extrabold leading-tight">
+            AI-Powered Script Generation
+          </h1>
+          <p className="mt-4 text-lg text-gray-300">
+            Create professional content in seconds using AI-driven technology.
+          </p>
+          <div className="mt-6 space-x-4">
+            <button className="bg-blue-500 hover:bg-blue-600 px-6 py-3 text-white font-semibold rounded-lg transition">
+              Try for Free
             </button>
-        </div>
-        <section className="py-16 px-2.5">
-            <h2 className="text-3xl font-bold text-center">What We Offer</h2>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center">
-                <h3 className="font-bold">Easy Portfolio Creation</h3>
-                <p>Create a beautiful portfolio in minutes with our simple and intuitive builder.</p>
-                </div>
-                <div className="text-center">
-                <h3 className="font-bold">Customizable Templates</h3>
-                <p>Choose from a variety of professional templates to suit your personal style.</p>
-                </div>
-                <div className="text-center">
-                <h3 className="font-bold">Showcase Your Projects</h3>
-                <p>Upload your work and showcase your skills with images, descriptions, and links.</p>
-                </div>
-            </div>
-        </section>
-        <section className="py-16 bg-gray-100 px-2.5">
-            <h2 className="text-3xl font-bold text-center">Sample Portfolios</h2>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-white shadow-lg rounded-lg p-4">
-                <img src="portfolio1.jpg" alt="Portfolio 1" className="w-full h-48 object-cover rounded-t-lg" />
-                <h3 className="mt-4 text-xl font-bold">John Doe - Developer</h3>
-                <p className="text-gray-500">A portfolio showcasing web development projects.</p>
-                </div>
-                <div className="bg-white shadow-lg rounded-lg p-4">
-                <img src="portfolio2.jpg" alt="Portfolio 2" className="w-full h-48 object-cover rounded-t-lg" />
-                <h3 className="mt-4 text-xl font-bold">Jane Smith - Designer</h3>
-                <p className="text-gray-500">A portfolio displaying graphic design and branding work.</p>
-                </div>
-                <div className="bg-white shadow-lg rounded-lg p-4">
-                <img src="portfolio3.jpg" alt="Portfolio 3" className="w-full h-48 object-cover rounded-t-lg" />
-                <h3 className="mt-4 text-xl font-bold">Chris Lee - Photographer</h3>
-                <p className="text-gray-500">A portfolio featuring photography and visual art.</p>
-                </div>
-            </div>
-        </section>
-        <section className="py-16 bg-gray-200 px-2.5">
-            <h2 className="text-3xl font-bold text-center">What Our Users Say</h2>
-            <div className="mt-8 flex justify-center">
-                <blockquote className="bg-white p-6 shadow-lg rounded-lg max-w-md">
-                <p className="text-lg italic">"This platform made it so easy to build my portfolio and showcase my skills. Highly recommend!"</p>
-                <footer className="mt-4 font-semibold">– John Doe</footer>
-                </blockquote>
-            </div>
-        </section>
-        <div className="bg-blue-600 text-white py-16 text-center px-2.5">
-            <h2 className="text-3xl font-bold">Ready to create your portfolio?</h2>
-            <p className="mt-2 text-lg">Sign up now to start building your personalized portfolio.</p>
-            <button className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg">
-                Get Started
+            <button className="bg-gray-800 hover:bg-gray-700 px-6 py-3 text-white font-semibold rounded-lg transition">
+              Watch Demo
             </button>
+          </div>
         </div>
-
+  
+        {/* Features Section */}
+        <section className="py-20 px-6 bg-gray-900 text-white text-center">
+          <h2 className="text-4xl font-bold">Why Choose Our AI?</h2>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 bg-gray-800 rounded-lg">
+              <h3 className="text-xl font-semibold">AI-Powered Content</h3>
+              <p className="mt-2 text-gray-400">
+                Generate scripts, blogs, and marketing copies effortlessly.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-800 rounded-lg">
+              <h3 className="text-xl font-semibold">Seamless Integration</h3>
+              <p className="mt-2 text-gray-400">
+                Connect with ChatGPT/Gemini APIs for intelligent responses.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-800 rounded-lg">
+              <h3 className="text-xl font-semibold">Customizable & Fast</h3>
+              <p className="mt-2 text-gray-400">
+                Tailor content output based on your needs in real time.
+              </p>
+            </div>
+          </div>
+        </section>
+  
+        {/* How It Works */}
+        <section className="py-20 px-6 bg-gray-800 text-white text-center">
+          <h2 className="text-4xl font-bold">How It Works</h2>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 bg-gray-700 rounded-lg">
+              <h3 className="text-xl font-semibold">Step 1: Sign Up</h3>
+              <p className="mt-2 text-gray-400">
+                Create your account to access AI-powered tools.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-700 rounded-lg">
+              <h3 className="text-xl font-semibold">Step 2: Generate Scripts</h3>
+              <p className="mt-2 text-gray-400">
+                Enter your ideas and let AI generate high-quality content.
+              </p>
+            </div>
+            <div className="p-6 bg-gray-700 rounded-lg">
+              <h3 className="text-xl font-semibold">Step 3: Export & Share</h3>
+              <p className="mt-2 text-gray-400">
+                Download and share your AI-generated content instantly.
+              </p>
+            </div>
+          </div>
+        </section>
+  
+        {/* Pricing Section */}
+        <section className="py-20 px-6 bg-gray-900 text-white text-center">
+          <h2 className="text-4xl font-bold">Pricing Plans</h2>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 bg-gray-800 rounded-lg">
+              <h3 className="text-2xl font-semibold">Free Plan</h3>
+              <p className="text-gray-400">Basic features with limited usage.</p>
+              <button className="mt-4 bg-blue-500 px-6 py-2 text-white font-semibold rounded-lg">
+                Get Started
+              </button>
+            </div>
+            <div className="p-6 bg-blue-600 rounded-lg">
+              <h3 className="text-2xl font-semibold">Pro Plan</h3>
+              <p className="text-white">Advanced AI tools for professionals.</p>
+              <button className="mt-4 bg-white text-blue-600 px-6 py-2 font-semibold rounded-lg">
+                Choose Plan
+              </button>
+            </div>
+            <div className="p-6 bg-gray-800 rounded-lg">
+              <h3 className="text-2xl font-semibold">Enterprise</h3>
+              <p className="text-gray-400">Custom AI solutions for businesses.</p>
+              <button className="mt-4 bg-blue-500 px-6 py-2 text-white font-semibold rounded-lg">
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </section>
+  
+        {/* Testimonials */}
+        <section className="py-20 px-6 bg-gray-800 text-white">
+          <h2 className="text-4xl font-bold text-center">What Our Users Say</h2>
+          <div className="mt-8 flex justify-center">
+            <blockquote className="bg-gray-900 p-6 shadow-lg rounded-lg max-w-lg text-center">
+              <p className="text-lg italic text-gray-300">
+                "This AI tool has transformed the way I create content! Highly recommended!"
+              </p>
+              <footer className="mt-4 font-semibold">– Alex Johnson</footer>
+            </blockquote>
+          </div>
+        </section>
+  
+        {/* Call to Action */}
+        <div className="bg-blue-600 text-white py-16 text-center px-6">
+          <h2 className="text-3xl font-bold">Start Creating with AI Today!</h2>
+          <p className="mt-2 text-lg">Sign up now to experience AI-powered script generation.</p>
+          <button className="mt-6 bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold">
+            Get Started
+          </button>
+        </div>
       </>
     );
   };

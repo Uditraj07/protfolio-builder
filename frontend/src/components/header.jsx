@@ -1,33 +1,54 @@
-// src/components/Header.jsx
-import React, { useState } from 'react';
-import { useAuth } from '../AuthContext';
-import { Link } from 'react-router-dom';
+
+
+import { useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext"; // Adjust the import path based on your project
+
+
+
+
+
 
 const Header = () => {
   const { isLoggedIn, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate=useNavigate();
+
+  function handelLogout(){
+    logout();
+    navigate('/login');
+  }
 
   return (
-    <header className="bg-blue-600 text-white p-4">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="bg-black bg-opacity-90 backdrop-blur-lg text-white fixed top-0 w-full shadow-md z-50">
+      <div className="container mx-auto flex items-center justify-between py-5 px-2.5 md:px-5">
         {/* Logo */}
-        <div className="text-2xl font-bold">
-          <Link to="/" className="text-white">Logo</Link>
+        <div className="text-3xl font-extrabold tracking-wide">
+          <Link to="/" className="text-white hover:text-gray-300 transition">
+            NolanAI
+          </Link>
         </div>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-6">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-8 text-lg">
           {!isLoggedIn ? (
             <>
-              <Link to="/login" className="hover:underline">Login</Link>
-              <Link to="/register" className="hover:underline">Signup</Link>
-              <Link to="/portfolio" className="hover:underline">Your Portfolio</Link>
+              <Link to="/features" className="hover:text-gray-300 transition">Features</Link>
+              <Link to="/pricing" className="hover:text-gray-300 transition">Pricing</Link>
+              <Link to="/about" className="hover:text-gray-300 transition">About Us</Link>
+              <Link to="/login" className="hover:text-gray-300 transition">Login</Link>
+              <Link to="/register" className="px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg transition">
+                Get Started
+              </Link>
             </>
           ) : (
             <>
-              <Link to="/dashboard" className="hover:underline">Dashboard</Link>
-              <Link to="/portfolio" className="hover:underline">Your Portfolio</Link>
-              <button onClick={logout} className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded">
+              <Link to="/dashboard" className="hover:text-gray-300 transition">Dashboard</Link>
+              <Link to="/profile" className="hover:text-gray-300 transition">Profile</Link>
+              <button 
+                onClick={handelLogout} 
+                className="px-5 py-2 bg-red-500 hover:bg-red-600 rounded-lg transition"
+              >
                 Logout
               </button>
             </>
@@ -36,35 +57,54 @@ const Header = () => {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-3xl focus:outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? '×' : '☰'}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-blue-700 p-4 space-y-4 mt-2.5">
+      {/* Mobile Navigation */}
+      <div 
+        className={`md:hidden absolute w-full bg-black bg-opacity-95 transition-all duration-300 ${
+          isMobileMenuOpen ? "top-16 opacity-100" : "top-[-250px] opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col text-center py-6 space-y-4">
           {!isLoggedIn ? (
             <>
-              <Link to="/login" className="block hover:underline">Login</Link>
-              <Link to="/register" className="block hover:underline">Signup</Link>
-              <Link to="/portfolio" className="block hover:underline">Your Portfolio</Link>
+              <Link to="/features" className="text-lg hover:text-gray-300 transition">Features</Link>
+              <Link to="/pricing" className="text-lg hover:text-gray-300 transition">Pricing</Link>
+              <Link to="/about" className="text-lg hover:text-gray-300 transition">About Us</Link>
+              <Link to="/login" className="text-lg hover:text-gray-300 transition">Login</Link>
+              <Link to="/register" className="px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg transition">
+                Get Started
+              </Link>
             </>
           ) : (
             <>
-              <Link to="/dashboard" className="block hover:underline">Dashboard</Link>
-              <Link to="/portfolio" className="block hover:underline">Your Portfolio</Link>
-              <button onClick={logout} className="block bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded">
+              <Link to="/dashboard" className="text-lg hover:text-gray-300 transition">Dashboard</Link>
+              <Link to="/profile" className="text-lg hover:text-gray-300 transition">Profile</Link>
+              <button 
+                onClick={handelLogout} 
+                className="px-5 py-2 bg-red-500 hover:bg-red-600 rounded-lg transition"
+              >
                 Logout
               </button>
             </>
           )}
-        </div>
-      )}
+        </nav>
+      </div>
     </header>
   );
 };
 
+
+
+
 export default Header;
+
+
+
+
+

@@ -1,4 +1,3 @@
-// src/pages/Login.jsx
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,25 +8,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const {setIsLoggedIn} = useAuth();
+  const { setIsLoggedIn } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      });
+      const response = await axios.post("http://localhost:5000/api/auth/login", { email, password });
 
-      // Assuming your API returns a token or user data upon successful login
       console.log("Login successful", response.data);
       setIsLoggedIn(true);
-      localStorage.setItem('authtoken',response.data.token);
-      
-      // Redirect to homepage or dashboard after successful login
-      navigate("/");
+      localStorage.setItem("authtoken", response.data.token);
 
+      navigate("/dashboard");
     } catch (err) {
       console.error("Login failed", err);
       setError("Invalid email or password");
@@ -35,37 +27,51 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <form onSubmit={handleSubmit} className="w-96 p-6 border rounded shadow-md">
-        <h2 className="text-2xl mb-4">Login</h2>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 to-black">
+      <div className="w-full max-w-md p-8 pb-0 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 text-white">
+        <h2 className="text-3xl font-bold text-center mb-6">Login</h2>
 
-        <div className="mb-4">
-          <label htmlFor="email" className="block">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
+        {error && <p className="text-red-400 text-center mb-4">{error}</p>}
 
-        <div className="mb-4">
-          <label htmlFor="password" className="block">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-2 bg-black/40 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-white placeholder-gray-400"
+              placeholder="Enter your email"
+            />
+          </div>
 
-        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded">Login</button>
-      </form>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-4 py-2 bg-black/40 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-white placeholder-gray-400"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <button type="submit" className="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition">
+            Sign In
+          </button>
+
+          <p className="text-center text-gray-300">
+            Don't have an account?{" "}
+            <a href="/register" className="text-blue-400 hover:text-blue-500 transition">
+              Register here
+            </a>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
